@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SliderContent from "./SliderContent";
-import SingleSlide from "./SingleSlide";
+import Arrow from "./Arrow";
 
 const Slider = () => {
   const images = [
@@ -12,11 +12,42 @@ const Slider = () => {
   //passing down by props translate transform and width for carousel slider
   const windowWidth = () => window.innerWidth;
   const [state, setState] = useState({
+    activeIndex: 0,
     translate: 0,
-    transition: 0.45,
+    transition: 0.4,
   });
   // destructure state to pass in props
-  const { translate, transition } = state;
+  const { translate, transition, activeIndex } = state;
+
+  const nextSlide = () => {
+    if (activeIndex === images.length - 1) {
+      return setState({
+        ...state,
+        activeIndex: 0,
+        translate: 0,
+      });
+    }
+    setState({
+      ...state,
+      activeIndex: activeIndex + 1,
+      translate: (activeIndex + 1) * windowWidth(),
+    });
+  };
+  const prevSlide = () => {
+    if (activeIndex === 0) {
+      return setState({
+        ...state,
+        activeIndex: images.length - 1,
+        translate: (images.length - 1) * windowWidth(),
+      });
+    }
+    setState({
+      ...state,
+      activeIndex: activeIndex - 1,
+      translate: (activeIndex - 1) * windowWidth(),
+    });
+  };
+
   return (
     <div className='slider-main-container'>
       <SliderContent
@@ -24,7 +55,9 @@ const Slider = () => {
         transition={transition}
         width={windowWidth() * images.length}
         images={images}
-      ></SliderContent>
+      />
+      <Arrow direction='left' handleClick={prevSlide} />
+      <Arrow direction='right' handleClick={nextSlide} />
     </div>
   );
 };

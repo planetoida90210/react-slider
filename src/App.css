@@ -30,3 +30,24 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.arrow {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    cursor: pointer;
+    transition: transform ease-in 0.1s;
+}
+
+.arrow:hover {
+    transform: scale(1.1)
+}
+
+.arrow img {
+    width: 50px;
+    background: rgba(255, 255, 255, 45%);
+    padding: 10px;
+    border-radius: 50%;
+}
