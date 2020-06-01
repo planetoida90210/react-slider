@@ -51,3 +51,21 @@ body {
     padding: 10px;
     border-radius: 50%;
 }
+
+.dots-container {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-dot {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+}

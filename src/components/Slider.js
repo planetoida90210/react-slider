@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SliderContent from "./SliderContent";
 import Arrow from "./Arrow";
+import Dots from "./Dots";
 
 const Slider = () => {
   const images = [
@@ -9,17 +10,20 @@ const Slider = () => {
     "https://images.unsplash.com/photo-1509680859026-7d8cfc6894f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
     "https://images.unsplash.com/photo-1584183187666-ccea8b8d88c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80",
   ];
-  //passing down by props translate transform and width for carousel slider
+  //seting up widnow width for translateX images
   const windowWidth = () => window.innerWidth;
+  //passing down by props translate transform and width for carousel slider
   const [state, setState] = useState({
     activeIndex: 0,
     translate: 0,
     transition: 0.4,
   });
-  // destructure state to pass in props
+  // destructure state
   const { translate, transition, activeIndex } = state;
 
+  //next slide passing in Arrow component
   const nextSlide = () => {
+    // return to first slide
     if (activeIndex === images.length - 1) {
       return setState({
         ...state,
@@ -33,7 +37,9 @@ const Slider = () => {
       translate: (activeIndex + 1) * windowWidth(),
     });
   };
+  // previous slide passing in Arrow component
   const prevSlide = () => {
+    // return for last slide
     if (activeIndex === 0) {
       return setState({
         ...state,
@@ -58,6 +64,7 @@ const Slider = () => {
       />
       <Arrow direction='left' handleClick={prevSlide} />
       <Arrow direction='right' handleClick={nextSlide} />
+      <Dots images={images} activeIndex={activeIndex} />
     </div>
   );
 };
