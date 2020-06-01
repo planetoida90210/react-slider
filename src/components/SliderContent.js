@@ -1,6 +1,6 @@
 import React from "react";
 import SingleSlide from "./SingleSlide";
-const SliderContent = ({ translate, transition, width, images }) => {
+const SliderContent = ({ translate, transition, width, _images }) => {
   return (
     <div
       className='slider-content-container'
@@ -10,7 +10,7 @@ const SliderContent = ({ translate, transition, width, images }) => {
         width: `${width}px`,
       }}
     >
-      {images.map((image) => (
+      {_images.map((image) => (
         <SingleSlide key={image} content={image} />
       ))}
     </div>

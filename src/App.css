@@ -38,12 +38,9 @@ body {
     align-items: center;
     top: 50%;
     cursor: pointer;
-    transition: transform ease-in 0.1s;
 }
 
-.arrow:hover {
-    transform: scale(1.1)
-}
+
 
 .arrow img {
     width: 50px;
